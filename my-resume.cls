@@ -59,7 +59,7 @@
 
 \RequirePackage{silence}
 
-% The page header is deliberately disabled in my-resume, so the warning by scrlayer-scrpage is invalid. 
+% The page header is deliberately disabled in my-resume, so the warning by scrlayer-scrpage is invalid.
 \WarningFilter{scrlayer-scrpage}{Very small head height detected!}
 
 
@@ -199,7 +199,7 @@
       ]{highlightbar.even}
 }
 
-% define the layer for the header 
+% define the layer for the header
 \DeclareNewLayer[
   background,
   topmargin,
@@ -293,7 +293,7 @@
 % contact info
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\infofield}[2]{\mbox{\makebox[5mm]{\textcolor{accent}{\normalsize #1}}\hspace{0.5em}#2}\vspace{0.2em}\newline}
+\newcommand{\infofield}[2]{\mbox{\makebox[5mm]{\textcolor{accent}{\normalsize #1}}\hspace{0.5em}\textcolor{highlightbartext}{#2}}\vspace{0.2em}\newline}
 \newcommand{\email}[1]{\infofield{\faEnvelope}{\href{mailto:#1}{#1}}}
 \newcommand{\address}[1]{\infofield{\faAt}{#1}}
 \newcommand{\location}[1]{\infofield{\faMapMarker}{#1}}
@@ -301,6 +301,7 @@
 \newcommand{\homepage}[2]{\infofield{\faHome}{\href{#2}{#1}}}
 \newcommand{\linkedin}[2]{\infofield{\faLinkedin}{\href{#2}{#1}}}
 \newcommand{\github}[2]{\infofield{\faGithub}{\href{#2}{#1}}}
+\newcommand{\gitlab}[2]{\infofield{\faGitlab}{\href{#2}{#1}}}
 \newcommand{\orcid}[2]{\infofield{\aiOrcid}{\href{#2}{#1}}}
 \newcommand{\ads}[2]{\infofield{\aiADS}{\href{#2}{#1}}}
 
@@ -344,7 +345,7 @@
                 \@mainbar
                 \hspace{\dimexpr \marginleft+\marginright}%
                 \@highlightbar
-            }   
+            }
         }
 }
 
@@ -404,12 +405,48 @@
     \vspace{0.5em}
 }
 
+% format teaching list
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set length of date/place column versus position column in fraction of linewidth before linewidth gets redefined in minipages
+\newlength{\teachingdateplacelength}
+\newlength{\teachingpositionlength}
+\setlength{\teachingdateplacelength}{0.4\linewidth}
+\setlength{\teachingpositionlength}{0.6\linewidth}
+\newcommand{\teaching}[4]{%
+    \begin{minipage}[t]{\teachingdateplacelength}% minipage for left column with date/place
+        \footnotesize
+        \begin{minipage}[t]{3mm}% wrap marker in minipage to allow multi-line dates
+            \makebox[3mm][c]{\faCalendar}
+        \end{minipage}%
+        \hspace{0.5em}%
+        \begin{minipage}[t]{\dimexpr \teachingdateplacelength-3mm-0.5em}% wrap date in minipage to allow multi-line dates
+            #1
+        \end{minipage}%
+        \par
+        \vspace{0.1em}
+        \begin{minipage}[t]{3mm}% wrap marker in minipage to allow multi-line places
+            \makebox[3mm][c]{\faGraduationCap}
+        \end{minipage}%
+        \hspace{0.5em}%
+        \begin{minipage}[t]{\dimexpr \teachingdateplacelength-3mm-0.5em}% wrap place in minipage to allow multi-line places
+            #2
+        \end{minipage}%
+    \end{minipage}%
+    \begin{minipage}[t]{\teachingpositionlength}% minipage for position
+        {\large \color{emphasis} #3}
+    \end{minipage}%
+    \ifstrequal{#4}{}{}{\par \vspace{0.1em} \footnotesize #4}
+    \par\normalsize
+    \vspace{0.5em}
+}
+
 
 % skill with 5 dot bar chart
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\skill}[2]{%
-    \textcolor{emphasis}{\textbf{#1}}\hfill
+    \textcolor{highlightbartext}{\textbf{#1}}\hfill
     \foreach \x in {1,...,5}{%
       \space{\ifnumgreater{\x}{#2}{\color{gray}}{\color{accent}}\faCircle}}\par%
 }
@@ -418,7 +455,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\simpleskill}[1]{%
-    \textcolor{emphasis}{\textbf{#1}}\par%
+    \textcolor{highlightbartext}{\textbf{#1}}\par%
 }
 
 % sectioning of skills
