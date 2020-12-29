@@ -59,7 +59,7 @@
 
 \RequirePackage{silence}
 
-% The page header is deliberately disabled in my-resume, so the warning by scrlayer-scrpage is invalid. 
+% The page header is deliberately disabled in my-resume, so the warning by scrlayer-scrpage is invalid.
 \WarningFilter{scrlayer-scrpage}{Very small head height detected!}
 
 
@@ -199,7 +199,7 @@
       ]{highlightbar.even}
 }
 
-% define the layer for the header 
+% define the layer for the header
 \DeclareNewLayer[
   background,
   topmargin,
@@ -301,6 +301,7 @@
 \newcommand{\homepage}[2]{\infofield{\faHome}{\href{#2}{#1}}}
 \newcommand{\linkedin}[2]{\infofield{\faLinkedin}{\href{#2}{#1}}}
 \newcommand{\github}[2]{\infofield{\faGithub}{\href{#2}{#1}}}
+\newcommand{\gitlab}[2]{\infofield{\faGitlab}{\href{#2}{#1}}}
 \newcommand{\orcid}[2]{\infofield{\aiOrcid}{\href{#2}{#1}}}
 \newcommand{\ads}[2]{\infofield{\aiADS}{\href{#2}{#1}}}
 
@@ -344,7 +345,7 @@
                 \@mainbar
                 \hspace{\dimexpr \marginleft+\marginright}%
                 \@highlightbar
-            }   
+            }
         }
 }
 
