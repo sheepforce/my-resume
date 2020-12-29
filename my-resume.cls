@@ -405,6 +405,42 @@
     \vspace{0.5em}
 }
 
+% format teaching list
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set length of date/place column versus position column in fraction of linewidth before linewidth gets redefined in minipages
+\newlength{\teachingdateplacelength}
+\newlength{\teachingpositionlength}
+\setlength{\teachingdateplacelength}{0.4\linewidth}
+\setlength{\teachingpositionlength}{0.6\linewidth}
+\newcommand{\teaching}[4]{%
+    \begin{minipage}[t]{\teachingdateplacelength}% minipage for left column with date/place
+        \footnotesize
+        \begin{minipage}[t]{3mm}% wrap marker in minipage to allow multi-line dates
+            \makebox[3mm][c]{\faCalendar}
+        \end{minipage}%
+        \hspace{0.5em}%
+        \begin{minipage}[t]{\dimexpr \teachingdateplacelength-3mm-0.5em}% wrap date in minipage to allow multi-line dates
+            #1
+        \end{minipage}%
+        \par
+        \vspace{0.1em}
+        \begin{minipage}[t]{3mm}% wrap marker in minipage to allow multi-line places
+            \makebox[3mm][c]{\faGraduationCap}
+        \end{minipage}%
+        \hspace{0.5em}%
+        \begin{minipage}[t]{\dimexpr \teachingdateplacelength-3mm-0.5em}% wrap place in minipage to allow multi-line places
+            #2
+        \end{minipage}%
+    \end{minipage}%
+    \begin{minipage}[t]{\teachingpositionlength}% minipage for position
+        {\large \color{emphasis} #3}
+    \end{minipage}%
+    \ifstrequal{#4}{}{}{\par \vspace{0.1em} \footnotesize #4}
+    \par\normalsize
+    \vspace{0.5em}
+}
+
 
 % skill with 5 dot bar chart
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
