@@ -43,7 +43,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % \RequirePackage[utf8]{inputenc}
-\RequirePackage[T1]{fontenc}
+\RequirePackage{fontspec}
 \RequirePackage{tikz}
 \usetikzlibrary{arrows}
 \RequirePackage[skins]{tcolorbox}       % somehow required for tikz to work at all
