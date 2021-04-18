@@ -449,7 +449,7 @@
 \newlength{\softwarelanguageslength}
 \setlength{\softwarelinklength}{0.4\linewidth}
 \setlength{\softwarelanguageslength}{0.6\linewidth}
-\newcommand{\software}[3]{%
+\newcommand{\software}[4]{%
     \begin{minipage}[c]{\softwarelinklength}% minipage for languages used in project
         \footnotesize
         \begin{minipage}[t]{3mm}% wrap marker in minipage to allow multi-line dates
@@ -457,14 +457,14 @@
         \end{minipage}%
         \hspace{0.5em}%
         \begin{minipage}[t]{\dimexpr \softwarelinklength-3mm-0.5em}% wrap date in minipage to allow multi-line dates
-            #2
+            #3
         \end{minipage}%
         \par
     \end{minipage}%
     \begin{minipage}[c]{\softwarelanguageslength}% minipage for position
-        {\large \color{emphasis} #1}
+        {\large \color{emphasis} \href{#2}{#1}}
     \end{minipage}%
-    \ifstrequal{#3}{}{}{\par \vspace{0.1em} \footnotesize #3}
+    \ifstrequal{#3}{}{}{\par \vspace{0.1em} \footnotesize #4}
     \par\normalsize
     \vspace{0.5em}
 }
