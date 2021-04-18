@@ -441,6 +441,34 @@
     \vspace{0.5em}
 }
 
+% format software list
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set length of date/place column versus position column in fraction of linewidth before linewidth gets redefined in minipages
+\newlength{\softwarelinklength}
+\newlength{\softwarelanguageslength}
+\setlength{\softwarelinklength}{0.4\linewidth}
+\setlength{\softwarelanguageslength}{0.6\linewidth}
+\newcommand{\software}[3]{%
+    \begin{minipage}[c]{\softwarelinklength}% minipage for languages used in project
+        \footnotesize
+        \begin{minipage}[t]{3mm}% wrap marker in minipage to allow multi-line dates
+            \makebox[3mm][c]{\faFont}
+        \end{minipage}%
+        \hspace{0.5em}%
+        \begin{minipage}[t]{\dimexpr \softwarelinklength-3mm-0.5em}% wrap date in minipage to allow multi-line dates
+            #2
+        \end{minipage}%
+        \par
+    \end{minipage}%
+    \begin{minipage}[c]{\softwarelanguageslength}% minipage for position
+        {\large \color{emphasis} #1}
+    \end{minipage}%
+    \ifstrequal{#3}{}{}{\par \vspace{0.1em} \footnotesize #3}
+    \par\normalsize
+    \vspace{0.5em}
+}
+
 
 % skill with 5 dot bar chart
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
